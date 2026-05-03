@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Site de casamento de Chriz Machado e Kalel Chaves. Confira nossa história, cerimônia e deixe seu recado!">
-    <title>Chriz & Kalel - Nosso Casamento</title>
+    <title>Kalel & Chriz - Nosso Casamento</title>
     <!-- Local Fonts -->
     <link rel="stylesheet" href="assets/fonts/google-fonts.css">
 
@@ -110,10 +110,6 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background-image: url('assets/background.26fd87f6.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
         }
 
         .hero-content {
@@ -123,6 +119,23 @@
             width: 100%;
             padding: 0 20px;
             animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero-leaf {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: auto;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-leaf.left {
+            left: 0;
+        }
+
+        .hero-leaf.right {
+            right: 0;
         }
 
         .hero-names-wrapper {
@@ -471,6 +484,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero-leaf.left {
+                transform: translateX(-8%);
+                height: 60%;
+                top: 76vw;
+            }
+
+            .hero-leaf.right {
+                transform: translateX(20%);
+            }
+
             .hero-names {
                 font-size: 4.5rem;
             }
@@ -578,8 +601,8 @@
     <nav id="navbar">
         <div class="nav-logo">
             <a href="#home"
-                style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--primary-color); letter-spacing: 4px; text-decoration: none; font-weight: 400;">C
-                & K</a>
+                style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--primary-color); letter-spacing: 4px; text-decoration: none; font-weight: 400;">K
+                & C</a>
         </div>
         <ul>
             <li><a href="#casal">A História</a></li>
@@ -590,11 +613,13 @@
     </nav>
 
     <section id="home" class="hero">
+        <img src="assets/tree_leaves_home_left.png" class="hero-leaf left" alt="">
+        <img src="assets/tree_leaves_home_right.png" class="hero-leaf right" alt="">
         <div class="hero-content">
             <div class="hero-names-wrapper">
-                <div class="hero-names">Chriz</div>
-                <div class="hero-ampersand">e</div>
                 <div class="hero-names">Kalel</div>
+                <div class="hero-ampersand">e</div>
+                <div class="hero-names">Chriz</div>
             </div>
             <div class="hero-date">
                 10 . 10 . 2026
@@ -724,7 +749,7 @@
     <footer>
         <img src="assets/logotipo.png" alt="Logotipo Chriz & Kalel"
             style="max-width: 150px; height: auto; margin-bottom: 15px;">
-        <p>CHRIZ & KALEL</p>
+        <p>KALEL & CHRIZ</p>
         <p style="margin-top: 40px;">&copy; 2026. Feito com muito amor.</p>
     </footer>
 
