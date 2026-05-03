@@ -617,14 +617,10 @@
         <div class="form-container">
             <p style="text-align: center; margin-bottom: 30px; color: var(--light-text);">Por favor, confirme sua
                 presença até o dia 12 de Novembro de 2026.</p>
-            <form onsubmit="event.preventDefault(); alert('Obrigado por confirmar sua presença!');">
+            <form onsubmit="submitRSVP(event)">
                 <div class="form-group">
                     <label for="name">Nome Completo</label>
                     <input type="text" id="name" required placeholder="Ex: João da Silva">
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" required placeholder="seuemail@exemplo.com">
                 </div>
                 <div class="form-group">
                     <label for="attendance">Você irá ao evento?</label>
@@ -649,6 +645,25 @@
     </footer>
 
     <script>
+        // WhatsApp RSVP Form Submission
+        function submitRSVP(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const attendance = document.getElementById('attendance').value;
+            let message = '';
+
+            if (attendance === 'yes') {
+                message = `Eu ${name} confirmo a presença no casamento`;
+            } else {
+                message = 'Infelizmente nao poderei comparecer ao casamento';
+            }
+
+            const phoneNumber = '555197928454';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+
         // Navbar Scroll Effect
         window.addEventListener('scroll', function () {
             const navbar = document.getElementById('navbar');
@@ -660,15 +675,15 @@
         });
 
         // Generate Parallax Leaves dynamically along the page
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const container = document.getElementById('leaves-container');
             if (!container) return;
-            
+
             const footer = document.querySelector('footer');
             const totalHeight = footer ? footer.offsetTop : document.body.scrollHeight;
             const viewportHeight = window.innerHeight;
             const numSets = Math.ceil(totalHeight / viewportHeight);
-            
+
             const leafData = [
                 { src: 'tree_leaves_1.png', speed: 0.2, baseTop: 15, left: '-5%', right: 'auto', width: 150, rotation: 15 },
                 { src: 'tree_leaves_2.png', speed: 0.35, baseTop: 40, left: 'auto', right: '-5%', width: 200, rotation: -25 },
@@ -680,7 +695,7 @@
                 leafData.forEach(data => {
                     const topVh = data.baseTop + (i * 100);
                     const topPx = (topVh / 100) * viewportHeight;
-                    
+
                     // Prevent leaves from going past the footer
                     if (topPx > totalHeight - 200) {
                         return;
@@ -692,13 +707,13 @@
                     img.setAttribute('data-speed', data.speed);
                     img.setAttribute('data-rotation', data.rotation);
                     img.alt = "";
-                    
+
                     img.style.top = `${topVh}vh`;
                     if (data.left !== 'auto') img.style.left = data.left;
                     if (data.right !== 'auto') img.style.right = data.right;
                     img.style.width = `${data.width}px`;
                     img.style.transform = `rotate(${data.rotation}deg)`;
-                    
+
                     container.appendChild(img);
                 });
             }
