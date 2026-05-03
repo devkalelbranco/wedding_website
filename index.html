@@ -7,25 +7,24 @@
     <meta name="description"
         content="Site de casamento de Chriz Machado e Kalel Chaves. Confira nossa história, cerimônia e deixe seu recado!">
     <title>Chriz & Kalel - Nosso Casamento</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap"
-        rel="stylesheet">
+    <!-- Local Fonts -->
+    <link rel="stylesheet" href="assets/fonts/google-fonts.css">
 
     <style>
         :root {
-            --bg-color: #fcfbf9;
-            --primary-color: #3b5062;
-            /* Slate dark blue */
-            --accent-color: #559196;
-            /* Soft teal for buttons */
-            --text-color: #333333;
-            --light-text: #777777;
-            --border-color: #cecece;
+            --bg-color: #f8f7f2;
+            /* Creamy paper from iCasei */
+            --primary-color: #333333;
+            /* Charcoal */
+            --accent-color: #8da382;
+            /* Sage green */
+            --text-color: #4a4a4a;
+            --light-text: #6b6b6b;
+            --border-color: #e0ddd6;
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Montserrat', sans-serif;
-            --nav-height: 80px;
+            --font-script: 'Alex Brush', cursive;
+            --nav-height: 90px;
         }
 
         * {
@@ -42,10 +41,8 @@
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
-            /* Background wave pattern */
-            background-image: url('assets/wave.png');
-            background-repeat: repeat;
-            background-size: 400px;
+            /* Subtle paper texture effect */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
         h1,
@@ -66,35 +63,34 @@
             width: 100%;
             height: var(--nav-height);
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             background: transparent;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             z-index: 1000;
-            padding: 0 20px;
+            padding: 0 60px;
         }
 
         nav.scrolled {
-            background: rgba(252, 251, 249, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(5px);
+            background: rgba(248, 247, 242, 0.98);
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05);
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 40px;
+            align-items: center;
         }
 
         nav a {
             text-decoration: none;
             color: var(--primary-color);
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 3px;
             position: relative;
             padding: 5px 0;
             transition: color 0.3s;
@@ -104,132 +100,89 @@
             color: var(--accent-color);
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--accent-color);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
         /* Hero Section */
         .hero {
             height: 100vh;
+            /* For better mobile viewport handling */
+            min-height: 100svh;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            padding-top: var(--nav-height);
             overflow: hidden;
-        }
-
-        .hero-floral {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw;
-            max-width: 800px;
-            opacity: 0.15;
-            z-index: 1;
-            pointer-events: none;
+            background-image: url('assets/background.26fd87f6.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .hero-content {
-            background: var(--bg-color);
-            padding: 4rem 6rem;
-            border: 2px solid #e0e0e0;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
             text-align: center;
             z-index: 2;
             position: relative;
-            max-width: 90%;
+            width: 100%;
+            padding: 0 20px;
             animation: fadeIn 1.5s ease-out;
         }
 
-        .hero-content::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            bottom: -10px;
-            left: -10px;
-            border: 1px solid #e0e0e0;
-            z-index: -1;
-        }
-
-        .hero-monogram {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            letter-spacing: 5px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-monogram span {
-            display: block;
-            font-size: 2rem;
-            color: var(--light-text);
-            margin: -10px 0;
-            font-style: italic;
+        .hero-names-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 1rem 0 0;
         }
 
         .hero-names {
-            font-size: 2.5rem;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            margin: 1rem 0;
+            font-family: var(--font-script);
+            font-size: 6.5rem;
+            color: var(--primary-color);
+            line-height: 1;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 0;
         }
 
         .hero-ampersand {
-            font-size: 2.5rem;
-            font-style: italic;
-            color: var(--light-text);
-            margin: 0.5rem 0;
+            font-family: var(--font-script);
+            font-size: 4.5rem;
+            color: var(--primary-color);
+            margin: 0 10px;
+            font-style: normal;
         }
 
         .hero-date {
-            margin-top: 2rem;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            letter-spacing: 4px;
-            color: var(--light-text);
+            margin-top: 1.5rem;
+            font-family: var(--font-serif);
+            font-weight: 300;
+            font-size: 1.3rem;
+            letter-spacing: 8px;
+            color: var(--primary-color);
         }
 
         .hero-date span {
-            margin: 0 15px;
-            color: var(--primary-color);
+            display: none;
+            /* Hide dividers for clean look */
         }
 
         /* Sections */
         section {
-            padding: 100px 20px;
-            min-height: 80vh;
+            padding: 120px 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
+            font-family: var(--font-serif);
+            color: var(--primary-color);
         }
 
         .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 2px;
-            background: var(--accent-color);
-            margin: 20px auto 0;
+            display: none;
         }
 
         /* Couple Section */
@@ -238,33 +191,39 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            background-color: #fff;
+            /* Contrast from bg */
         }
 
         .couple-image-container {
             width: 100%;
-            max-width: 900px;
+            max-width: 480px;
             margin: 0 auto 3rem;
             position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .couple-img {
             width: 100%;
             display: block;
+            border-radius: 300px 300px 0 0;
+            /* Elegant Arch */
+            object-fit: cover;
+            aspect-ratio: 3/4;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
             transition: transform 0.5s ease;
         }
 
         .couple-image-container:hover .couple-img {
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
 
         .couple-text {
-            max-width: 700px;
+            max-width: 650px;
             margin: 0 auto;
-            font-size: 1.1rem;
-            color: var(--light-text);
+            font-size: 1.25rem;
+            color: var(--text-color);
+            line-height: 1.8;
+            font-family: var(--font-serif);
         }
 
         /* Details Sections */
@@ -277,42 +236,43 @@
         }
 
         .detail-card {
-            background: #fff;
+            background: transparent;
             padding: 40px;
             text-align: center;
             border: 1px solid var(--border-color);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
-            transition: transform 0.3s ease;
+            transition: border-color 0.3s ease;
+            box-shadow: none;
         }
 
         .detail-card:hover {
-            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            transform: none;
         }
 
         .detail-card h3 {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
+            font-family: var(--font-script);
+            color: var(--accent-color);
+            font-weight: 400;
         }
 
         .detail-card p {
             margin-bottom: 15px;
-            color: var(--light-text);
+            color: var(--text-color);
         }
 
         .detail-card .time {
-            font-weight: 500;
+            font-family: var(--font-serif);
+            font-weight: 400;
             color: var(--primary-color);
-            font-size: 1.1rem;
-            margin: 20px 0;
+            font-size: 1.6rem;
+            margin: 15px 0;
         }
 
         /* Banner Section */
         .banner {
             height: 60vh;
-            background-image: url('assets/sunset.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             position: relative;
             display: flex;
             align-items: center;
@@ -320,6 +280,22 @@
             text-align: center;
             color: white;
             padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .banner-bg {
+            position: absolute;
+            top: -30%;
+            left: -5%;
+            width: 110%;
+            height: 160%;
+            background-image: url('assets/sunset.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+            will-change: transform;
+            pointer-events: none;
         }
 
         .banner::before {
@@ -329,7 +305,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(51, 51, 51, 0.4);
+            z-index: 1;
         }
 
         .banner-content {
@@ -340,61 +317,69 @@
 
         .banner-content h2 {
             color: white;
-            font-size: 3rem;
+            font-family: var(--font-script);
+            font-size: 4.5rem;
             margin-bottom: 20px;
+            text-transform: none;
+            letter-spacing: 0;
         }
 
         /* Buttons */
         .btn {
             display: inline-block;
-            padding: 15px 40px;
+            padding: 16px 45px;
             background-color: var(--accent-color);
             color: white;
             text-decoration: none;
             font-family: var(--font-sans);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            border-radius: 2px;
-            transition: background 0.3s ease;
-            border: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-color);
             cursor: pointer;
+            border-radius: 0;
         }
 
         .btn:hover {
-            background-color: var(--primary-color);
+            background-color: transparent;
+            color: var(--accent-color);
         }
 
         .btn-outline {
             background-color: transparent;
             border: 1px solid white;
+            color: white;
         }
 
         .btn-outline:hover {
             background-color: white;
             color: var(--primary-color);
+            border-color: white;
         }
 
-        /* Forms (RSVP / Recados) */
+        /* Forms */
         .form-container {
             max-width: 600px;
             margin: 0 auto;
-            background: #fff;
-            padding: 50px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background: transparent;
+            padding: 0;
+            border: none;
+            box-shadow: none;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             text-align: left;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
+            margin-bottom: 12px;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             color: var(--primary-color);
         }
 
@@ -402,19 +387,22 @@
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            background: var(--bg-color);
-            transition: border 0.3s;
+            padding: 12px 0;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            background: transparent;
+            transition: border-color 0.3s;
+            color: var(--text-color);
+            border-radius: 0;
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
         }
 
         /* Message Board */
@@ -442,26 +430,30 @@
 
         /* Footer */
         footer {
-            background: var(--primary-color);
-            color: white;
+            background: var(--bg-color);
+            color: var(--primary-color);
             text-align: center;
-            padding: 50px 20px;
+            padding: 80px 20px 40px;
             font-family: var(--font-serif);
             position: relative;
             z-index: 20;
+            border-top: 1px solid var(--border-color);
         }
 
         footer h2 {
-            color: white;
+            color: var(--primary-color);
             font-size: 2rem;
             margin-bottom: 10px;
         }
 
         footer p {
             font-family: var(--font-sans);
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--light-text);
             margin-top: 20px;
+            opacity: 1;
         }
 
         /* Animations */
@@ -479,18 +471,29 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-content {
-                padding: 2rem;
+            .hero-names {
+                font-size: 4.5rem;
             }
 
-            .hero-names {
-                font-size: 1.8rem;
-                letter-spacing: 4px;
+            .hero-ampersand {
+                font-size: 3rem;
+            }
+
+            .hero-date {
+                font-size: 1.2rem;
+                letter-spacing: 6px;
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
 
             nav ul {
                 display: none;
-                /* In a real app, we'd add a hamburger menu */
+            }
+
+            .couple-img {
+                border-radius: 200px 200px 0 0;
             }
         }
 
@@ -500,10 +503,9 @@
             z-index: 10;
             pointer-events: none;
             opacity: 0.85;
-            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.05));
             will-change: transform;
             transition: transform 0.1s ease-out;
-            /* Smooth scrolling effect */
         }
 
         #leaves-container {
@@ -517,13 +519,51 @@
             z-index: 10;
         }
 
-
-
         @media (max-width: 768px) {
             .parallax-leaf {
                 display: none;
-                /* Hide on small screens to prevent overflow/clutter */
             }
+        }
+
+        /* Modal Transitions */
+        .modal-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transform: translateY(20px) scale(0.95);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: translateY(0) scale(1);
+            opacity: 1;
         }
     </style>
 </head>
@@ -536,31 +576,28 @@
 
 
     <nav id="navbar">
-        <div class="nav-logo" style="position: absolute; left: 40px;">
-            <a href="#home"><img src="assets/logotipo.png" alt="Logotipo do Casal"
-                    style="height: 40px; width: auto; object-fit: contain;"></a>
+        <div class="nav-logo">
+            <a href="#home"
+                style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--primary-color); letter-spacing: 4px; text-decoration: none; font-weight: 400;">C
+                & K</a>
         </div>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#casal">O Casal</a></li>
-            <li><a href="#eventos">Cerimônia e Recepção</a></li>
-            <li><a href="#presentes">Lista de Presentes</a></li>
-            <li><a href="#rsvp">Confirme sua Presença</a></li>
+            <li><a href="#casal">A História</a></li>
+            <li><a href="#eventos">Cerimônia</a></li>
+            <li><a href="#presentes">Presentes</a></li>
+            <li><a href="#rsvp">Confirmar Presença</a></li>
         </ul>
     </nav>
 
     <section id="home" class="hero">
-        <img src="assets/floral.png" alt="Floral decoration" class="hero-floral">
         <div class="hero-content">
-            <div class="hero-logo">
-                <img src="assets/logotipo.png" alt="Logotipo Chriz & Kalel"
-                    style="max-width: 250px; height: auto; margin-bottom: 2rem;">
+            <div class="hero-names-wrapper">
+                <div class="hero-names">Chriz</div>
+                <div class="hero-ampersand">e</div>
+                <div class="hero-names">Kalel</div>
             </div>
-            <div class="hero-names">Chriz</div>
-            <div class="hero-ampersand">&</div>
-            <div class="hero-names">Kalel</div>
             <div class="hero-date">
-                SÁBADO <span>|</span> 10.10 <span>|</span> 2026
+                10 . 10 . 2026
             </div>
         </div>
     </section>
@@ -577,32 +614,40 @@
         </div>
     </section>
 
-    <section id="eventos" style="background-color: #f6f5f1;">
+    <section id="eventos">
         <h2 class="section-title">O Grande Dia</h2>
         <div class="details-grid" style="grid-template-columns: 1fr; max-width: 700px; margin: 0 auto;">
             <div class="detail-card">
                 <h3>Cerimônia & Recepção</h3>
-                <p>Nossa cerimônia será realizada ao ar livre, cercada pela natureza. Logo em seguida, no mesmo local, esperamos você para celebrar conosco com muita comida, bebida e música boa!</p>
-                
+                <p>Nossa cerimônia será realizada ao ar livre, cercada pela natureza. Logo em seguida, no mesmo local,
+                    esperamos você para celebrar conosco com muita comida, bebida e música boa!</p>
+
                 <div style="margin: 30px 0; display: flex; justify-content: center; gap: 40px; align-items: center;">
                     <div style="text-align: center;">
                         <div class="time" style="margin-bottom: 5px;">17:30</div>
-                        <p style="margin: 0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Cerimônia</p>
+                        <p style="margin: 0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Cerimônia</p>
                     </div>
                     <div style="height: 50px; width: 1px; background-color: rgba(0, 0, 0, 0.1);"></div>
                     <div style="text-align: center;">
                         <div class="time" style="margin-bottom: 5px;">18:00</div>
-                        <p style="margin: 0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Recepção</p>
+                        <p style="margin: 0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Recepção</p>
                     </div>
                 </div>
 
-                <p style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 5px; color: var(--text-dark);">Espaço Shalom</p>
+                <p
+                    style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 5px; color: var(--text-dark);">
+                    Espaço Shalom</p>
                 <p style="margin-bottom: 30px;">Rua Linha Andreas, 4495, Vera Cruz - RS <br /> 96880-000</p>
-                
-                <a id="btn-mapa" href="https://www.google.com/maps/dir/?api=1&destination=Espaço+Shalom,+Rua+Linha+Andreas,+4495,+Vera+Cruz+-+RS,+96880-000" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 12px 30px; font-size: 0.9rem;">Ver no Mapa</a>
-                
+
+                <a id="btn-mapa"
+                    href="https://www.google.com/maps/dir/?api=1&destination=Espaço+Shalom,+Rua+Linha+Andreas,+4495,+Vera+Cruz+-+RS,+96880-000"
+                    target="_blank" rel="noopener noreferrer" class="btn"
+                    style="padding: 12px 30px; font-size: 0.9rem;">Ver no Mapa</a>
+
                 <script>
-                    document.addEventListener("DOMContentLoaded", function() {
+                    document.addEventListener("DOMContentLoaded", function () {
                         var btnMapa = document.getElementById('btn-mapa');
                         // Verifica se o usuário está acessando por um dispositivo móvel
                         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -617,27 +662,37 @@
     </section>
 
     <section id="presentes" class="banner">
+        <div class="banner-bg"></div>
         <div class="banner-content">
             <h2>Operação Lua de Mel</h2>
-            <p style="margin-bottom: 30px; max-width: 600px; font-family: var(--font-sans);">A nossa maior alegria é ter você celebrando esse dia com a gente! Como nosso cantinho já está quase pronto, optamos por não ter uma lista de presentes físicos. Se você desejar nos presentear, a melhor forma de nos ajudar agora é contribuindo para a nossa lua de mel.</p>
-            <button onclick="openPixModal()" class="btn btn-outline" style="cursor: pointer;">Contribuir com Pix</button>
+            <p style="margin-bottom: 30px; max-width: 600px; font-family: var(--font-sans);">A nossa maior alegria é ter
+                você celebrando esse dia com a gente! Como nosso cantinho já está quase pronto, optamos por não ter uma
+                lista de presentes físicos. Se você desejar nos presentear, a melhor forma de nos ajudar agora é
+                contribuindo para a nossa lua de mel.</p>
+            <button onclick="openPixModal()" class="btn btn-outline" style="cursor: pointer;">Contribuir com
+                Pix</button>
         </div>
     </section>
 
     <!-- Modal do Pix -->
-    <div id="pixModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
-        <div style="background-color: #fff; padding: 40px; border-radius: 10px; max-width: 400px; width: 90%; text-align: center; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-            <span onclick="closePixModal()" style="position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-light);">&times;</span>
+    <div id="pixModal" class="modal-overlay">
+        <div class="modal-content">
+            <span onclick="closePixModal()"
+                style="position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-light);">&times;</span>
             <h3 style="font-family: var(--font-serif); color: var(--text-dark); margin-bottom: 20px;">Nosso Pix</h3>
-            
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=CHAVE_PIX_EXEMPLO" alt="QR Code Pix" style="margin-bottom: 20px; border: 1px solid #eee; padding: 10px; border-radius: 8px;">
-            
+
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=kalel.branco@gmail.com"
+                alt="QR Code Pix"
+                style="margin-bottom: 20px; border: 1px solid #eee; padding: 10px; border-radius: 8px;">
+
             <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 10px;">Ou copie a chave abaixo:</p>
-            <div style="background-color: #f9f9f9; padding: 10px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #ddd; word-break: break-all; font-family: monospace; font-size: 1rem;">
-                <span id="pixKey">(51) 99999-9999</span>
+            <div
+                style="background-color: #f9f9f9; padding: 10px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #ddd; word-break: break-all; font-family: monospace; font-size: 1rem;">
+                <span id="pixKey">kalel.branco@gmail.com</span>
             </div>
-            
-            <button onclick="copyPixKey()" class="btn" style="width: 100%; padding: 12px; font-size: 0.9rem;">Copiar Chave</button>
+
+            <button onclick="copyPixKey()" class="btn" style="width: 100%; padding: 12px; font-size: 0.9rem;">Copiar
+                Chave</button>
         </div>
     </div>
 
@@ -748,26 +803,48 @@
             }
         });
 
-        // Parallax Effect for Leaves
+        // Parallax Effect for Leaves e Banner - Otimizado (Hardware Acceleration)
+        let isTicking = false;
         window.addEventListener('scroll', function () {
-            const scrolled = window.pageYOffset;
-            const leaves = document.querySelectorAll('.parallax-leaf');
-            leaves.forEach(function (leaf) {
-                const speed = parseFloat(leaf.getAttribute('data-speed'));
-                const rotation = parseFloat(leaf.getAttribute('data-rotation')) || 0;
-                leaf.style.transform = `translateY(${scrolled * speed}px) rotate(${rotation}deg)`;
-            });
-        });
+            if (!isTicking) {
+                window.requestAnimationFrame(function () {
+                    const scrolled = window.pageYOffset;
+
+                    // Parallax Leaves
+                    const leaves = document.querySelectorAll('.parallax-leaf');
+                    leaves.forEach(function (leaf) {
+                        const speed = parseFloat(leaf.getAttribute('data-speed'));
+                        const rotation = parseFloat(leaf.getAttribute('data-rotation')) || 0;
+                        leaf.style.transform = `translate3d(0, ${scrolled * speed}px, 0) rotate(${rotation}deg)`;
+                    });
+
+                    // Parallax Banner (Simulando o background-attachment: fixed via GPU)
+                    const banner = document.querySelector('.banner');
+                    const bannerBg = document.querySelector('.banner-bg');
+                    if (banner && bannerBg) {
+                        const rect = banner.getBoundingClientRect();
+                        // Só calcula a animação se a seção estiver visível na tela
+                        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                            const offset = rect.top * 0.35;
+                            bannerBg.style.transform = `translate3d(0, ${offset}px, 0)`;
+                        }
+                    }
+
+                    isTicking = false;
+                });
+                isTicking = true;
+            }
+        }, { passive: true }); // passive: true avisa ao navegador que não vamos cancelar o scroll, melhorando performance
     </script>
 
     <script>
         // Funções do Modal Pix
         function openPixModal() {
-            document.getElementById('pixModal').style.display = 'flex';
+            document.getElementById('pixModal').classList.add('show');
         }
 
         function closePixModal() {
-            document.getElementById('pixModal').style.display = 'none';
+            document.getElementById('pixModal').classList.remove('show');
         }
 
         function copyPixKey() {
@@ -780,7 +857,7 @@
         }
 
         // Fechar modal clicando fora dele
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             const modal = document.getElementById('pixModal');
             if (event.target == modal) {
                 closePixModal();
