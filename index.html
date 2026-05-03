@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Site de casamento de Chriz Machado e Kalel Chaves. Confira nossa história, cerimônia e deixe seu recado!">
+    <title>Chriz & Kalel - Nosso Casamento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #fcfbf9;
+            --primary-color: #3b5062;
+            /* Slate dark blue */
+            --accent-color: #559196;
+            /* Soft teal for buttons */
+            --text-color: #333333;
+            --light-text: #777777;
+            --border-color: #cecece;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --nav-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Background wave pattern */
+            background-image: url('assets/wave.png');
+            background-repeat: repeat;
+            background-size: 400px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            color: var(--primary-color);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--nav-height);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        nav.scrolled {
+            background: rgba(252, 251, 249, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding-top: var(--nav-height);
+            overflow: hidden;
+        }
+
+        .hero-floral {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            max-width: 800px;
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            background: var(--bg-color);
+            padding: 4rem 6rem;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            max-width: 90%;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            bottom: -10px;
+            left: -10px;
+            border: 1px solid #e0e0e0;
+            z-index: -1;
+        }
+
+        .hero-monogram {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            letter-spacing: 5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-monogram span {
+            display: block;
+            font-size: 2rem;
+            color: var(--light-text);
+            margin: -10px 0;
+            font-style: italic;
+        }
+
+        .hero-names {
+            font-size: 2.5rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin: 1rem 0;
+        }
+
+        .hero-ampersand {
+            font-size: 2.5rem;
+            font-style: italic;
+            color: var(--light-text);
+            margin: 0.5rem 0;
+        }
+
+        .hero-date {
+            margin-top: 2rem;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            letter-spacing: 4px;
+            color: var(--light-text);
+        }
+
+        .hero-date span {
+            margin: 0 15px;
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 20px;
+            min-height: 80vh;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+            margin: 20px auto 0;
+        }
+
+        /* Couple Section */
+        .couple {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .couple-image-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .couple-img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .couple-image-container:hover .couple-img {
+            transform: scale(1.03);
+        }
+
+        .couple-text {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--light-text);
+        }
+
+        /* Details Sections */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .detail-card {
+            background: #fff;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .detail-card p {
+            margin-bottom: 15px;
+            color: var(--light-text);
+        }
+
+        .detail-card .time {
+            font-weight: 500;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin: 20px 0;
+        }
+
+        /* Banner Section */
+        .banner {
+            height: 60vh;
+            background-image: url('assets/sunset.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .banner-content h2 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Forms (RSVP / Recados) */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 50px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            background: var(--bg-color);
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* Message Board */
+        .messages {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+        .message-card {
+            background: transparent;
+            border-bottom: 1px solid var(--border-color);
+            padding: 30px 0;
+            text-align: left;
+        }
+
+        .message-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .message-card p {
+            color: var(--light-text);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            font-family: var(--font-serif);
+            position: relative;
+            z-index: 20;
+        }
+
+        footer h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 2rem;
+            }
+
+            .hero-names {
+                font-size: 1.8rem;
+                letter-spacing: 4px;
+            }
+
+            nav ul {
+                display: none;
+                /* In a real app, we'd add a hamburger menu */
+            }
+        }
+
+        /* Parallax Leaves */
+        .parallax-leaf {
+            position: absolute;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0.85;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
+            will-change: transform;
+            transition: transform 0.1s ease-out;
+            /* Smooth scrolling effect */
+        }
+
+
+
+        @media (max-width: 768px) {
+            .parallax-leaf {
+                display: none;
+                /* Hide on small screens to prevent overflow/clutter */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Parallax Leaves Container -->
+    <div id="leaves-container"></div>
+
+
+
+    <nav id="navbar">
+        <div class="nav-logo" style="position: absolute; left: 40px;">
+            <a href="#home"><img src="assets/logotipo.png" alt="Logotipo do Casal"
+                    style="height: 40px; width: auto; object-fit: contain;"></a>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#casal">O Casal</a></li>
+            <li><a href="#eventos">Cerimônia e Recepção</a></li>
+            <li><a href="#presentes">Lista de Presentes</a></li>
+            <li><a href="#rsvp">Confirme sua Presença</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <img src="assets/floral.png" alt="Floral decoration" class="hero-floral">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="assets/logotipo.png" alt="Logotipo Chriz & Kalel"
+                    style="max-width: 250px; height: auto; margin-bottom: 2rem;">
+            </div>
+            <div class="hero-names">Chriz</div>
+            <div class="hero-ampersand">&</div>
+            <div class="hero-names">Kalel</div>
+            <div class="hero-date">
+                SÁBADO <span>|</span> 10.10 <span>|</span> 2026
+            </div>
+        </div>
+    </section>
+
+    <section id="casal" class="couple">
+        <h2 class="section-title">Nossa História</h2>
+        <div class="couple-image-container">
+            <img src="assets/couple.png" alt="Chriz e Kalel" class="couple-img">
+        </div>
+        <div class="couple-text">
+            <p>De um encontro ao acaso a uma jornada de cumplicidade e muito amor. Cada dia nos trouxe mais certeza de
+                que nossos caminhos foram traçados para se cruzar. Estamos muito felizes em poder celebrar esse momento
+                tão especial com as pessoas que mais amamos. Sejam bem-vindos ao nosso sonho!</p>
+        </div>
+    </section>
+
+    <section id="eventos" style="background-color: #f6f5f1;">
+        <h2 class="section-title">O Grande Dia</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <h3>Cerimônia</h3>
+                <p>Nossa cerimônia será realizada ao ar livre, cercada pela natureza e por todos que amamos.</p>
+                <div class="time">16:00</div>
+                <p>Jardim Botânico de Curitiba</p>
+                <p>Rua Eng. Odo João, S/N</p>
+                <br>
+                <a href="#" class="btn" style="padding: 10px 20px; font-size: 0.8rem;">Ver Mapa</a>
+            </div>
+            <div class="detail-card">
+                <h3>Recepção</h3>
+                <p>Logo após a cerimônia, esperamos você para celebrar conosco com muita comida, bebida e música boa!
+                </p>
+                <div class="time">18:00</div>
+                <p>Salão de Festas das Flores</p>
+                <p>Mesmo endereço da cerimônia</p>
+                <br>
+                <a href="#" class="btn" style="padding: 10px 20px; font-size: 0.8rem;">Ver Mapa</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="presentes" class="banner">
+        <div class="banner-content">
+            <h2>Lista de Presentes</h2>
+            <p style="margin-bottom: 30px; max-width: 600px; font-family: var(--font-sans);">A nossa maior alegria é a
+                sua presença. Mas se você desejar nos presentear, preparamos uma lista virtual para nos ajudar na nossa
+                lua de mel e montagem do nosso lar.</p>
+            <a href="#" class="btn btn-outline">Acessar Lista de Presentes</a>
+        </div>
+    </section>
+
+    <section id="rsvp">
+        <h2 class="section-title">Confirme sua Presença</h2>
+        <div class="form-container">
+            <p style="text-align: center; margin-bottom: 30px; color: var(--light-text);">Por favor, confirme sua
+                presença até o dia 12 de Novembro de 2026.</p>
+            <form onsubmit="event.preventDefault(); alert('Obrigado por confirmar sua presença!');">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" required placeholder="Ex: João da Silva">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required placeholder="seuemail@exemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="attendance">Você irá ao evento?</label>
+                    <select id="attendance" required>
+                        <option value="">Selecione...</option>
+                        <option value="yes">Sim, eu irei!</option>
+                        <option value="no">Infelizmente não poderei comparecer.</option>
+                    </select>
+                </div>
+                <div class="form-group" style="text-align: center; margin-top: 40px;">
+                    <button type="submit" class="btn" style="width: 100%;">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <img src="assets/logotipo.png" alt="Logotipo Chriz & Kalel"
+            style="max-width: 150px; height: auto; margin-bottom: 15px;">
+        <p>CHRIZ & KALEL</p>
+        <p style="margin-top: 40px;">&copy; 2026. Feito com muito amor.</p>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Generate Parallax Leaves dynamically along the page
+        window.addEventListener('load', function() {
+            const container = document.getElementById('leaves-container');
+            if (!container) return;
+            
+            const footer = document.querySelector('footer');
+            const totalHeight = footer ? footer.offsetTop : document.body.scrollHeight;
+            const viewportHeight = window.innerHeight;
+            const numSets = Math.ceil(totalHeight / viewportHeight);
+            
+            const leafData = [
+                { src: 'tree_leaves_1.png', speed: 0.2, baseTop: 15, left: '-5%', right: 'auto', width: 150, rotation: 15 },
+                { src: 'tree_leaves_2.png', speed: 0.35, baseTop: 40, left: 'auto', right: '-5%', width: 200, rotation: -25 },
+                { src: 'tree_leaves_1.png', speed: 0.15, baseTop: 65, left: '-8%', right: 'auto', width: 180, rotation: 45 },
+                { src: 'tree_leaves_2.png', speed: 0.25, baseTop: 85, left: 'auto', right: '-2%', width: 160, rotation: -10 }
+            ];
+
+            for (let i = 0; i < numSets; i++) {
+                leafData.forEach(data => {
+                    const topVh = data.baseTop + (i * 100);
+                    const topPx = (topVh / 100) * viewportHeight;
+                    
+                    // Prevent leaves from going past the footer
+                    if (topPx > totalHeight - 200) {
+                        return;
+                    }
+
+                    const img = document.createElement('img');
+                    img.src = `assets/${data.src}`;
+                    img.className = 'parallax-leaf';
+                    img.setAttribute('data-speed', data.speed);
+                    img.setAttribute('data-rotation', data.rotation);
+                    img.alt = "";
+                    
+                    img.style.top = `${topVh}vh`;
+                    if (data.left !== 'auto') img.style.left = data.left;
+                    if (data.right !== 'auto') img.style.right = data.right;
+                    img.style.width = `${data.width}px`;
+                    img.style.transform = `rotate(${data.rotation}deg)`;
+                    
+                    container.appendChild(img);
+                });
+            }
+        });
+
+        // Parallax Effect for Leaves
+        window.addEventListener('scroll', function () {
+            const scrolled = window.pageYOffset;
+            const leaves = document.querySelectorAll('.parallax-leaf');
+            leaves.forEach(function (leaf) {
+                const speed = parseFloat(leaf.getAttribute('data-speed'));
+                const rotation = parseFloat(leaf.getAttribute('data-rotation')) || 0;
+                leaf.style.transform = `translateY(${scrolled * speed}px) rotate(${rotation}deg)`;
+            });
+        });
+    </script>
+</body>
+
+</html>
