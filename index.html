@@ -599,7 +599,19 @@
                 <p style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 5px; color: var(--text-dark);">Espaço Shalom</p>
                 <p style="margin-bottom: 30px;">Rua Linha Andreas, 4495, Vera Cruz - RS <br /> 96880-000</p>
                 
-                <a href="https://www.google.com/maps/dir/?api=1&destination=Espaço+Shalom,+Rua+Linha+Andreas,+4495,+Vera+Cruz+-+RS,+96880-000" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 12px 30px; font-size: 0.9rem;">Ver no Mapa</a>
+                <a id="btn-mapa" href="https://www.google.com/maps/dir/?api=1&destination=Espaço+Shalom,+Rua+Linha+Andreas,+4495,+Vera+Cruz+-+RS,+96880-000" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 12px 30px; font-size: 0.9rem;">Ver no Mapa</a>
+                
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var btnMapa = document.getElementById('btn-mapa');
+                        // Verifica se o usuário está acessando por um dispositivo móvel
+                        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                            // Se for celular, altera para o protocolo nativo que pede para escolher o App (Waze, Maps, etc)
+                            btnMapa.href = "geo:0,0?q=Espaço+Shalom,+Rua+Linha+Andreas,+4495,+Vera+Cruz+-+RS,+96880-000";
+                            btnMapa.removeAttribute("target"); // Remove o _blank pois o app abre nativamente
+                        }
+                    });
+                </script>
             </div>
         </div>
     </section>
