@@ -524,6 +524,47 @@
                 display: none;
             }
         }
+
+        /* Modal Transitions */
+        .modal-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transform: translateY(20px) scale(0.95);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -634,10 +675,8 @@
     </section>
 
     <!-- Modal do Pix -->
-    <div id="pixModal"
-        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
-        <div
-            style="background-color: #fff; padding: 40px; border-radius: 10px; max-width: 400px; width: 90%; text-align: center; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+    <div id="pixModal" class="modal-overlay">
+        <div class="modal-content">
             <span onclick="closePixModal()"
                 style="position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-light);">&times;</span>
             <h3 style="font-family: var(--font-serif); color: var(--text-dark); margin-bottom: 20px;">Nosso Pix</h3>
@@ -801,11 +840,11 @@
     <script>
         // Funções do Modal Pix
         function openPixModal() {
-            document.getElementById('pixModal').style.display = 'flex';
+            document.getElementById('pixModal').classList.add('show');
         }
 
         function closePixModal() {
-            document.getElementById('pixModal').style.display = 'none';
+            document.getElementById('pixModal').classList.remove('show');
         }
 
         function copyPixKey() {
