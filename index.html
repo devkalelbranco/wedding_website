@@ -309,12 +309,21 @@
             left: -5%;
             width: 110%;
             height: 160%;
-            background-image: url('assets/pre_wedding_2.jpg');
+            background-image: url('assets/pre_wedding_2.png');
             background-size: cover;
             background-position: center;
             z-index: 0;
             will-change: transform;
             pointer-events: none;
+        }
+
+        @media (min-width: 769px) {
+            .banner-bg {
+                width: 100%;
+                left: 0;
+                height: 120%;
+                top: -10%;
+            }
         }
 
         .banner::before {
@@ -490,6 +499,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .banner-bg {
+                background-image: url('assets/pre_wedding_2_mobile.png');
+            }
+
             nav {
                 padding: 0 25px;
             }
