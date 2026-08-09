@@ -24,6 +24,7 @@
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Montserrat', sans-serif;
             --font-script: 'Alex Brush', cursive;
+            --font-logo: 'Poppins';
             --nav-height: 90px;
         }
 
@@ -105,6 +106,16 @@
             color: var(--accent-color);
         }
 
+        .nav-logo a:first-child {
+            font-size: 1.1rem;
+        }
+
+        .nav-logo a:last-child {
+            display: block;
+            text-align: right;
+            margin-top: -8px;
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -172,7 +183,7 @@
 
         .hero-date {
             margin-top: 1.5rem;
-            font-family: var(--font-serif);
+            font-family: var(--font-sans);
             font-weight: 300;
             font-size: 1.3rem;
             letter-spacing: 8px;
@@ -195,7 +206,7 @@
             margin-bottom: 4rem;
             text-transform: uppercase;
             letter-spacing: 4px;
-            font-family: var(--font-serif);
+            font-family: var(--font-sans);
             color: var(--primary-color);
         }
 
@@ -241,7 +252,7 @@
             font-size: 1.25rem;
             color: var(--text-color);
             line-height: 1.8;
-            font-family: var(--font-serif);
+            font-family: var(--font-sans);
         }
 
         /* Details Sections */
@@ -507,6 +518,20 @@
                 padding: 0 25px;
             }
 
+            .nav-logo {
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-logo a:last-child {
+                text-align: center;
+                font-size: 1rem;
+            }
+
+            .nav-logo a:first-child {
+                font-size: 0.9rem;
+            }
+
             .detail-card {
                 padding: 30px 15px;
             }
@@ -540,6 +565,10 @@
 
             nav ul {
                 display: none;
+            }
+
+            nav a {
+                font-size: 0.9rem;
             }
 
             .couple-img {
@@ -628,8 +657,13 @@
     <nav id="navbar">
         <div class="nav-logo">
             <a href="#home"
-                style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--primary-color); letter-spacing: -2px; text-decoration: none; font-weight: 400;">K
-                & C</a>
+                style="font-family: var(--font-sans); color: var(--primary-color); letter-spacing: -1px; text-decoration: none; font-weight: 250; text-transform: none;">
+                DEUS FEZ TUDO LINDO NO SEU DEVIDO TEMPO.
+            </a>
+            <a href="#home"
+                style="font-family: var(--font-sans); font-size: 1rem; color: var(--primary-color); letter-spacing: -1px; text-decoration: none; font-weight: 250; text-transform: none;">
+                Ec. 3:11&nbsp;
+            </a>
         </div>
         <ul>
             <li><a href="#casal">A História</a></li>
