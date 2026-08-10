@@ -126,6 +126,10 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            background-image: url('assets/capa_background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .hero-content {
@@ -133,7 +137,10 @@
             z-index: 2;
             position: relative;
             width: 100%;
-            padding: 0 20px;
+            padding: 20vh 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             animation: fadeIn 1.5s ease-out;
         }
 
@@ -156,17 +163,18 @@
 
         .hero-names-wrapper {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
-            margin: 1rem 0 0;
+            margin: 1rem 0 40vh;
         }
 
         .hero-names {
             font-family: var(--font-script);
             font-size: 6.5rem;
-            color: var(--primary-color);
+            color: var(--bg-color);
             line-height: 1;
             font-weight: 400;
             text-transform: none;
@@ -176,18 +184,18 @@
         .hero-ampersand {
             font-family: var(--font-script);
             font-size: 4.5rem;
-            color: var(--primary-color);
+            color: var(--bg-color);
             margin: 0 10px;
             font-style: normal;
         }
 
         .hero-date {
-            margin-top: 1.5rem;
+            margin-top: -0.5rem;
             font-family: var(--font-sans);
             font-weight: 300;
             font-size: 1.3rem;
             letter-spacing: 8px;
-            color: var(--primary-color);
+            color: var(--bg-color);
         }
 
         .hero-date span {
@@ -293,7 +301,7 @@
         }
 
         .detail-card .time {
-            font-family: var(--font-serif);
+            font-family: var(--font-sans);
             font-weight: 400;
             color: var(--primary-color);
             font-size: 1.6rem;
@@ -547,7 +555,7 @@
             }
 
             .hero-names {
-                font-size: 4.5rem;
+                font-size: 3.5rem;
             }
 
             .hero-ampersand {
@@ -556,7 +564,8 @@
 
             .hero-date {
                 font-size: 1.2rem;
-                letter-spacing: 6px;
+                letter-spacing: 5px;
+
             }
 
             .section-title {
@@ -668,16 +677,14 @@
     </nav>
 
     <section id="home" class="hero">
-        <img src="assets/tree_leaves_home_left.png" class="hero-leaf left" alt="">
-        <img src="assets/tree_leaves_home_right.png" class="hero-leaf right" alt="">
+        <!-- <img src="assets/tree_leaves_home_left.png" class="hero-leaf left" alt="">
+        <img src="assets/tree_leaves_home_right.png" class="hero-leaf right" alt=""> -->
         <div class="hero-content">
             <div class="hero-names-wrapper">
-                <div class="hero-names">Kalel</div>
-                <div class="hero-ampersand">e</div>
-                <div class="hero-names">Chriz</div>
-            </div>
-            <div class="hero-date">
-                10 . 10 . 2026
+                <div class="hero-names">Kalel e Chriz</div>
+                <div class="hero-date">
+                    10 . 10 . 2026
+                </div>
             </div>
         </div>
     </section>
@@ -706,26 +713,22 @@
         <div class="details-grid" style="grid-template-columns: 1fr; max-width: 700px; margin: 0 auto;">
             <div class="detail-card">
                 <h3>Cerimônia & Recepção</h3>
-                <p>Nossa cerimônia será realizada ao ar livre, cercada pela natureza. Logo em seguida, no mesmo local,
-                    esperamos você para celebrar conosco com muita comida, bebida e música boa!</p>
+                <p>Estamos preparando tudo com muito carinho para viver um dos dias mais especiais das nossas vidas.
+                    A celebração terá início às 17:30. Depois da cerimônia, seguiremos para a recepção, onde
+                    continuaremos essa celebração com boa música, comida e, acima de tudo, a companhia de pessoas que
+                    fazem parte da nossa história.</p>
 
                 <div
                     style="margin: 30px 0; display: flex; justify-content: center; gap: 15px; align-items: center; flex-wrap: wrap;">
                     <div style="text-align: center; padding: 0 5px;">
+                        <p style="margin: 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Horário</p>
                         <div class="time" style="margin-bottom: 5px;">17:30</div>
-                        <p style="margin: 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
-                            Cerimônia</p>
-                    </div>
-                    <div style="height: 40px; width: 1px; background-color: rgba(0, 0, 0, 0.1);"></div>
-                    <div style="text-align: center; padding: 0 5px;">
-                        <div class="time" style="margin-bottom: 5px;">18:00</div>
-                        <p style="margin: 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
-                            Recepção</p>
                     </div>
                 </div>
 
                 <p
-                    style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 5px; color: var(--text-dark);">
+                    style="font-family: var(--font-sans); font-size: 1.3rem; margin-bottom: 5px; color: var(--text-dark);">
                     Espaço Shalom</p>
                 <p style="margin-bottom: 30px;">Rua Linha Andreas, 4495, Vera Cruz - RS <br /> 96880-000</p>
 
