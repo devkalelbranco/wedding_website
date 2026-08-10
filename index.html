@@ -35,6 +35,27 @@
             scroll-behavior: smooth;
         }
 
+        .bg-capa {
+            position: relative;
+            background-image: url('assets/background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .bg-capa::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(248, 247, 242, 0.5);
+            z-index: 0;
+        }
+
+        .bg-capa>* {
+            position: relative;
+            z-index: 1;
+        }
+
         html,
         body {
             overflow-x: hidden;
@@ -352,7 +373,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(51, 51, 51, 0.4);
+            background: rgba(51, 51, 51, 0.8);
             z-index: 1;
         }
 
@@ -485,6 +506,10 @@
             position: relative;
             z-index: 20;
             border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         footer h2 {
@@ -689,7 +714,7 @@
         </div>
     </section>
 
-    <section id="casal" class="couple">
+    <section id="casal" class="couple bg-capa">
         <h2 class="section-title">Nossa História</h2>
         <div class="couple-image-container">
             <img src="assets/pre_wedding_1.jpg" alt="Chriz e Kalel" class="couple-img">
@@ -708,7 +733,7 @@
         </div>
     </section>
 
-    <section id="eventos">
+    <section id="eventos" class="bg-capa">
         <h2 class="section-title">O Grande Dia</h2>
         <div class="details-grid" style="grid-template-columns: 1fr; max-width: 700px; margin: 0 auto;">
             <div class="detail-card">
@@ -755,11 +780,14 @@
     <section id="presentes" class="banner">
         <div class="banner-bg"></div>
         <div class="banner-content">
-            <h2>Operação Lua de Mel</h2>
-            <p style="margin-bottom: 30px; max-width: 600px; font-family: var(--font-sans);">A nossa maior alegria é ter
-                você celebrando esse dia com a gente! Como nosso cantinho já está quase pronto, optamos por não ter uma
-                lista de presentes físicos. Se você desejar nos presentear, a melhor forma de nos ajudar agora é
-                contribuindo para a nossa lua de mel.</p>
+            <h2>Quer nos presentear?</h2>
+            <p style="margin: 0 auto 30px; text-align: center; max-width: 600px; font-family: var(--font-sans); white-space: pre-line;">A presença de vocês no
+                nosso casamento é, sem dúvida, o maior presente que poderíamos receber. 🤍
+
+                Mas, se ainda assim quiserem nos presentear, escolhemos uma forma simples e prática: Pix!
+
+                Assim, vocês podem contribuir para os nossos planos e sonhos dessa nova fase — e nós podemos guardar cada gesto de carinho com muito amor.
+                Obrigado por fazerem parte da nossa história!</p>
             <button onclick="openPixModal()" class="btn btn-outline" style="cursor: pointer;">Presenteie com
                 Pix</button>
         </div>
@@ -772,14 +800,14 @@
                 style="position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-light);">&times;</span>
             <h3 style="font-family: var(--font-serif); color: var(--text-dark); margin-bottom: 20px;">Nosso Pix</h3>
 
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=kalel.branco@gmail.com"
-                alt="QR Code Pix"
-                style="margin-bottom: 20px; border: 1px solid #eee; padding: 10px; border-radius: 8px;">
+            <div id="pixQr" role="img" aria-label="QR Code Pix"
+                style="display: inline-block; margin-bottom: 20px; border: 1px solid #eee; padding: 10px; border-radius: 8px; line-height: 0;">
+            </div>
 
             <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 10px;">Ou copie a chave abaixo:</p>
             <div
                 style="background-color: #f9f9f9; padding: 10px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #ddd; word-break: break-all; font-family: monospace; font-size: 1rem;">
-                <span id="pixKey">kalel.branco@gmail.com</span>
+                <span id="pixKey">51996623876</span>
             </div>
 
             <button onclick="copyPixKey()" class="btn" style="width: 100%; padding: 12px; font-size: 0.9rem;">Copiar
@@ -787,7 +815,7 @@
         </div>
     </div>
 
-    <section id="rsvp">
+    <section id="rsvp" class="bg-capa">
         <h2 class="section-title">Confirme sua Presença</h2>
         <div class="form-container">
             <p style="text-align: center; margin-bottom: 30px; color: var(--light-text);">Por favor, confirme sua
@@ -812,9 +840,9 @@
         </div>
     </section>
 
-    <footer>
+    <footer class="bg-capa">
         <img src="assets/logotipo.png" alt="Logotipo Chriz & Kalel"
-            style="max-width: 250px; height: auto; margin-bottom: 15px;">
+            style="display: block; margin: 0 auto; max-width: 400px; height: auto; margin-bottom: 15px;">
         <p>KALEL & CHRIZ</p>
         <p style="margin-top: 40px;">&copy; 2026. Feito com muito amor.</p>
     </footer>
@@ -928,9 +956,35 @@
         }, { passive: true }); // passive: true avisa ao navegador que não vamos cancelar o scroll, melhorando performance
     </script>
 
+    <script src="assets/js/qrcode.min.js"></script>
     <script>
         // Funções do Modal Pix
+
+        // BR Code (payload EMV/Pix) gerado pelo app do banco — o texto completo
+        // que o QR precisa codificar para o pagador escanear e pagar direto.
+        const PIX_BR_CODE = "00020126360014BR.GOV.BCB.PIX0114+55519966238765204000053039865802BR5925Chrizielle Machado Carval6009SAO PAULO62140510a5uiTfJwaG63047FC5";
+
+        let pixQrRendered = false;
+
+        function renderPixQr() {
+            if (pixQrRendered) return;
+            const container = document.getElementById('pixQr');
+            if (!container || typeof qrcode === 'undefined') return;
+
+            // Nível M: equilíbrio entre correção de erro e densidade do QR,
+            // padrão recomendado para BR Code (o Bacen não exige um nível fixo).
+            const qr = qrcode(0, 'M');
+            qr.addData(PIX_BR_CODE);
+            qr.make();
+
+            container.innerHTML = qr.createSvgTag({ cellSize: 5, margin: 8, scalable: true });
+            container.querySelector('svg').style.width = '200px';
+            container.querySelector('svg').style.height = '200px';
+            pixQrRendered = true;
+        }
+
         function openPixModal() {
+            renderPixQr();
             document.getElementById('pixModal').classList.add('show');
         }
 
