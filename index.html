@@ -742,11 +742,16 @@
                     fazem parte da nossa história.</p>
 
                 <div
-                    style="margin: 30px 0; display: flex; justify-content: center; gap: 15px; align-items: center; flex-wrap: wrap;">
+                    style="margin: 30px 0; display: flex; justify-content: center; gap: 50px; align-items: center; flex-wrap: wrap;">
+                    <div style="text-align: center; padding: 0 5px;">
+                        <p style="margin: 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Data</p>
+                        <div class="time" style="margin-top: 5px;">10/10/2026</div>
+                    </div>
                     <div style="text-align: center; padding: 0 5px;">
                         <p style="margin: 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
                             Horário</p>
-                        <div class="time" style="margin-bottom: 5px;">17:30</div>
+                        <div class="time" style="margin-top: 5px;">17:30</div>
                     </div>
                 </div>
 
@@ -892,7 +897,7 @@
                 { src: 'tree_leaves_2.png', speed: 0.25, baseTop: 85, left: 'auto', right: '-2%', width: 160, rotation: -10 }
             ];
 
-            for (let i = 0; i < numSets; i++) {
+            for (let i = 1; i < numSets; i++) {
                 leafData.forEach(data => {
                     const topVh = data.baseTop + (i * 100);
                     const topPx = (topVh / 100) * viewportHeight;
