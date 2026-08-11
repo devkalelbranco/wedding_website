@@ -329,6 +329,73 @@
             margin: 15px 0;
         }
 
+        /* Mini Calendar */
+        .mini-calendar {
+            max-width: 300px;
+            margin: 0 auto;
+            background: transparent;
+            border: 1px solid #c1694f;
+            border-radius: 16px;
+            padding: 22px 18px;
+        }
+
+        .mini-calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--primary-color);
+            padding: 0 4px 16px;
+        }
+
+        .mini-calendar-weekdays,
+        .mini-calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .mini-calendar-weekdays span {
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--light-text);
+            padding-bottom: 10px;
+        }
+
+        .mini-calendar-days span {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--text-color);
+        }
+
+        .mini-calendar-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .mini-calendar-heart {
+            position: absolute;
+            top: -6px;
+            right: 6px;
+            font-size: 0.65rem;
+            line-height: 1;
+        }
+
         /* Banner Section */
         .banner {
             min-height: 60vh;
@@ -824,14 +891,27 @@
                     continuaremos essa celebração com boa música, comida e, acima de tudo, a companhia de pessoas que
                     fazem parte da nossa história.</p>
 
-                <div
-                    style="margin: 30px 0; display: flex; justify-content: center; gap: 50px; align-items: center; flex-wrap: wrap;">
-                    <div style="text-align: center; padding: 0 5px;">
-                        <p style="margin: 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
-                            Data</p>
-                        <div class="time" style="margin-top: 5px;">10/10/2026</div>
+                <div style="margin: 30px 0;">
+                    <div class="mini-calendar">
+                        <div class="mini-calendar-header">
+                            <span>Outubro</span>
+                            <span>2026</span>
+                        </div>
+                        <div class="mini-calendar-weekdays">
+                            <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+                        </div>
+                        <div class="mini-calendar-days">
+                            <span></span><span></span><span></span><span></span>
+                            <span>1</span><span>2</span><span>3</span>
+                            <span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+                            <span><span class="mini-calendar-badge">10</span><span
+                                    class="mini-calendar-heart">🤍</span></span>
+                            <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span>
+                            <span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span>
+                            <span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
+                        </div>
                     </div>
-                    <div style="text-align: center; padding: 0 5px;">
+                    <div style="text-align: center; margin-top: 25px;">
                         <p style="margin: 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
                             Horário</p>
                         <div class="time" style="margin-top: 5px;">17:30</div>
