@@ -284,6 +284,63 @@
             font-family: var(--font-sans);
         }
 
+        /* Countdown */
+        #casal {
+            padding-bottom: 10px;
+        }
+
+        .countdown-wrapper {
+            margin-top: 115px;
+        }
+
+        .countdown-title {
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-number {
+            font-family: var(--font-sans);
+            font-size: 3rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+
+        .countdown-label {
+            margin-top: 8px;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--light-text);
+        }
+
+        .countdown-message {
+            font-family: var(--font-script);
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-top: 30px;
+        }
+
         /* Details Sections */
         .details-grid {
             display: grid;
@@ -675,6 +732,15 @@
             .couple-img {
                 border-radius: 200px 200px 0 0;
             }
+
+            .countdown-number {
+                font-size: 2.2rem;
+            }
+
+            .countdown-label {
+                font-size: 0.62rem;
+                letter-spacing: 1px;
+            }
         }
 
         /* Parallax Leaves */
@@ -878,8 +944,73 @@
             <p style="font-size: 18px; font-weight: 550; margin-top: 15px;">
                 Até o dia do nosso casamento.
             </p>
+
+            <div class="countdown-wrapper">
+                <p class="countdown-title">Contagem Regressiva</p>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-days">0</span>
+                        <span class="countdown-label">Dias</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-minutes">00</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-seconds">00</span>
+                        <span class="countdown-label">Segundos</span>
+                    </div>
+                </div>
+                <p id="countdown-message" class="countdown-message" style="display: none;">O grande dia chegou! 🤍</p>
+            </div>
         </div>
     </section>
+
+    <script>
+        (function () {
+            // Horário de Brasília/São Paulo é UTC-3 o ano todo (sem horário de verão desde 2019),
+            // então fixamos o offset para o alvo valer o mesmo instante para qualquer visitante,
+            // independente do fuso horário do navegador dele.
+            var weddingDate = new Date("2026-10-10T17:30:00-03:00");
+
+            var elDays = document.getElementById('cd-days');
+            var elHours = document.getElementById('cd-hours');
+            var elMinutes = document.getElementById('cd-minutes');
+            var elSeconds = document.getElementById('cd-seconds');
+            var countdownEl = document.getElementById('countdown');
+            var messageEl = document.getElementById('countdown-message');
+            var timer;
+
+            function updateCountdown() {
+                var diff = weddingDate - new Date();
+
+                if (diff <= 0) {
+                    countdownEl.style.display = 'none';
+                    messageEl.style.display = 'block';
+                    clearInterval(timer);
+                    return;
+                }
+
+                var totalSeconds = Math.floor(diff / 1000);
+                var days = Math.floor(totalSeconds / 86400);
+                var hours = Math.floor((totalSeconds % 86400) / 3600);
+                var minutes = Math.floor((totalSeconds % 3600) / 60);
+                var seconds = totalSeconds % 60;
+
+                elDays.textContent = days;
+                elHours.textContent = String(hours).padStart(2, '0');
+                elMinutes.textContent = String(minutes).padStart(2, '0');
+                elSeconds.textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateCountdown();
+            timer = setInterval(updateCountdown, 1000);
+        })();
+    </script>
 
     <section id="eventos" class="bg-capa">
         <h2 class="section-title">O Grande Dia</h2>
