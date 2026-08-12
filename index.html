@@ -410,7 +410,7 @@
         .mini-calendar-weekdays,
         .mini-calendar-days {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
+            grid-template-columns: repeat(7, minmax(0, 1fr));
         }
 
         .mini-calendar-weekdays span {
@@ -422,7 +422,7 @@
             padding-bottom: 10px;
         }
 
-        .mini-calendar-days span {
+        .mini-calendar-days>span {
             position: relative;
             display: flex;
             align-items: center;
@@ -437,20 +437,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            padding-bottom: 3px;
             background: var(--accent-color);
             color: #fff;
             font-weight: 600;
-        }
-
-        .mini-calendar-heart {
-            position: absolute;
-            top: -6px;
-            right: 6px;
-            font-size: 0.65rem;
-            line-height: 1;
+            font-size: 0.68rem;
+            clip-path: url(#mini-calendar-heart-clip);
         }
 
         /* Banner Section */
@@ -896,6 +890,16 @@
 
 <body>
 
+    <!-- Definição do recorte em formato de coração usado no badge do mini-calendário -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <clipPath id="mini-calendar-heart-clip" clipPathUnits="objectBoundingBox">
+                <path
+                    d="M0.8683 0.1921 a0.2292 0.2292 0 0 0 -0.3242 0 L0.5 0.2363 l-0.0442 -0.0442 a0.2292 0.2292 0 0 0 -0.3242 0.3242 l0.0442 0.0442 L0.5 0.8846 l0.3242 -0.3242 0.0442 -0.0442 a0.2292 0.2292 0 0 0 0 -0.3242 z" />
+            </clipPath>
+        </defs>
+    </svg>
+
     <!-- Parallax Leaves Container -->
     <div id="leaves-container"></div>
 
@@ -1035,8 +1039,7 @@
                             <span></span><span></span><span></span><span></span>
                             <span>1</span><span>2</span><span>3</span>
                             <span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
-                            <span><span class="mini-calendar-badge">10</span><span
-                                    class="mini-calendar-heart">🤍</span></span>
+                            <span><span class="mini-calendar-badge">10</span></span>
                             <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span>
                             <span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span>
                             <span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
